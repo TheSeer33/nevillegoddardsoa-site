@@ -1,0 +1,31 @@
+{
+  "business": "Neville Goddard SOA",
+  "offer": "Law of Assumption audience access, paid sponsorships, digital products, coaching, creator integrations and educational content.",
+  "targetOutcome": "Paid sponsorships, creator partnerships, product revenue, coaching revenue and repeat brand relationships.",
+  "strikeSignals": [
+    "brand actively sponsoring wellness/spirituality creators",
+    "new wellness product launch",
+    "creator campaign open",
+    "affiliate-to-paid upgrade opportunity",
+    "travel/wellness partnership",
+    "high audience overlap",
+    "brand seeking women 18-45 or self-development audiences"
+  ],
+  "icp": [
+    "wellness",
+    "journaling",
+    "meditation",
+    "sleep",
+    "self-development",
+    "financial wellness",
+    "travel",
+    "luxury",
+    "consumer brands with creator budgets"
+  ],
+  "exclude": [
+    "affiliate-only deals where paid sponsorship is feasible",
+    "brands with no audience fit",
+    "unsafe or deceptive products"
+  ],
+  "cta": "Pitch a paid creator integration with clear deliverables, audience fit, retained IP terms, and deposit requirement."
+}
