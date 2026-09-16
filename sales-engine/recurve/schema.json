@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "classifications": [
+    "STRIKE",
+    "MONITOR",
+    "DISREGARD"
+  ],
+  "lead": {
+    "required": [
+      "company",
+      "domain",
+      "business",
+      "evidence",
+      "classification",
+      "reason",
+      "next_action",
+      "status"
+    ],
+    "optional": [
+      "contact",
+      "trigger",
+      "source_urls",
+      "last_checked_at",
+      "lesson_ids"
+    ]
+  },
+  "outcomes": [
+    "discovered",
+    "validated",
+    "drafted",
+    "sent",
+    "replied",
+    "meeting",
+    "proposal",
+    "won",
+    "lost",
+    "no_response"
+  ],
+  "evidence_required_for": [
+    "validated",
+    "sent",
+    "replied",
+    "meeting",
+    "proposal",
+    "won"
+  ],
+  "portfolio_output": [
+    "business",
+    "company",
+    "expected_cash",
+    "confidence",
+    "speed_to_cash",
+    "recurring_value",
+    "strategic_value",
+    "recommended_agents",
+    "evidence"
+  ]
+}
