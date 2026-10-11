@@ -4,10 +4,12 @@
   "type": "module",
   "dependencies": {
     "@netlify/blobs": "^9.0.0",
+    "@zernio/node": "^0.2.1153",
     "stripe": "^18.0.0"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "social": "node --env-file-if-exists=.env scripts/zernio.mjs"
   }
 }
