@@ -1,0 +1,26 @@
+[
+  {
+    "id": "6acb30a889b133b768862daf",
+    "status": "published",
+    "platforms": [
+      {
+        "platform": "instagram",
+        "status": "published",
+        "url": "https://www.instagram.com/reel/DeWDAamjHyg/",
+        "error": null
+      }
+    ]
+  },
+  {
+    "id": "6acb30af89b133b768862db9",
+    "status": "published",
+    "platforms": [
+      {
+        "platform": "youtube",
+        "status": "published",
+        "url": "https://www.youtube.com/watch?v=eV7Madnc1ks",
+        "error": null
+      }
+    ]
+  }
+]
