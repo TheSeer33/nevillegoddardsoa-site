@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mind Movies | Neville Goddard SOA</title>
+  <meta name="description" content="Create a private cinematic visualization of the life you are learning to inhabit, with personal scenes and a simple Neville-inspired viewing practice.">
+  <link rel="canonical" href="https://nevillegoddardsoa.com/mind-movies">
+  <meta property="og:title" content="Mind Movies | Neville Goddard SOA">
+  <meta property="og:description" content="Your future should feel familiar. Build a private Reality Rehearsal film with a simple Neville-inspired practice mode.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nevillegoddardsoa.com/mind-movies">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050505;
+      --panel: #11100e;
+      --cream: #f7efe1;
+      --text: #fffaf0;
+      --muted: #cbbfac;
+      --gold: #d8b56a;
+      --gold-2: #f0d28a;
+      --rose: #8e3840;
+      --ink: #080705;
+      --line: rgba(247,239,225,.16);
+      --line-strong: rgba(216,181,106,.42);
+      --soft: rgba(255,250,240,.76);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(216,181,106,.16), transparent 28rem),
+        radial-gradient(circle at 88% 16%, rgba(142,56,64,.18), transparent 30rem),
+        linear-gradient(180deg, #11100d 0%, #050505 42rem, #030303 100%);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 36px)); margin: 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(5,5,5,.82);
+      backdrop-filter: blur(18px);
+    }
+    nav { align-items: center; display: flex; gap: 18px; justify-content: space-between; padding: 18px 0; }
+    .brand {
+      color: var(--gold-2);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(19px, 3vw, 27px);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+    .nav-links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      padding: 8px 11px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .hero {
+      display: grid;
+      min-height: min(790px, calc(100vh - 70px));
+      padding: clamp(70px, 9vw, 132px) 0 clamp(54px, 7vw, 88px);
+      place-items: center start;
+    }
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .22em;
+      margin: 0 0 18px;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      color: var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    h1 {
+      font-size: clamp(54px, 9vw, 116px);
+      line-height: .9;
+      margin: 0;
+      max-width: 980px;
+    }
+    h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: .98;
+      margin: 0 0 18px;
+      max-width: 860px;
+    }
+    h3 { font-size: 25px; line-height: 1.08; margin: 8px 0 10px; }
+    .lead {
+      color: var(--soft);
+      font-size: clamp(18px, 2vw, 23px);
+      margin: 28px 0 0;
+      max-width: 780px;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button {
+      align-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      display: inline-flex;
+      font-weight: 850;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      text-decoration: none;
+    }
+    .primary { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+    .secondary { background: rgba(247,239,225,.055); color: var(--cream); }
+    .hero-film {
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      display: grid;
+      margin-top: 42px;
+      max-width: 860px;
+      min-height: 320px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .hero-film::before {
+      animation: drift 12s ease-in-out infinite alternate;
+      background:
+        linear-gradient(120deg, rgba(216,181,106,.24), transparent 22%, rgba(142,56,64,.18) 55%, transparent),
+        radial-gradient(circle at 72% 40%, rgba(240,210,138,.16), transparent 16rem),
+        linear-gradient(180deg, #211a15, #070707);
+      content: "";
+      inset: -10%;
+      position: absolute;
+    }
+    .hero-film::after {
+      background:
+        linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.055) 0 1px, transparent 1px 120px);
+      content: "";
+      inset: 0;
+      opacity: .55;
+      position: absolute;
+    }
+    .film-copy {
+      align-self: end;
+      max-width: 640px;
+      padding: clamp(24px, 5vw, 42px);
+      position: relative;
+      z-index: 1;
+    }
+    .film-copy strong {
+      color: var(--cream);
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: .96;
+      margin-bottom: 10px;
+    }
+    .film-copy span { color: var(--muted); display: block; max-width: 520px; }
+    @keyframes drift {
+      from { transform: translate3d(-1.5%, -1.5%, 0) scale(1.02); }
+      to { transform: translate3d(1.5%, 1.5%, 0) scale(1.08); }
+    }
+    .section { border-top: 1px solid var(--line); padding: clamp(54px, 8vw, 92px) 0; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .two { align-items: start; display: grid; gap: 22px; grid-template-columns: .9fr 1.1fr; }
+    .card, .form-card {
+      background: linear-gradient(180deg, rgba(247,239,225,.075), rgba(247,239,225,.026));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-height: 100%;
+      padding: 24px;
+    }
+    .card p, .card li, .form-card p { color: var(--muted); }
+    .steps { counter-reset: step; display: grid; gap: 12px; }
+    .step {
+      background: rgba(247,239,225,.045);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 42px 1fr;
+      padding: 16px;
+    }
+    .step::before {
+      align-items: center;
+      background: var(--gold);
+      border-radius: 50%;
+      color: var(--ink);
+      content: counter(step);
+      counter-increment: step;
+      display: flex;
+      font-weight: 900;
+      height: 34px;
+      justify-content: center;
+      width: 34px;
+    }
+    .price {
+      color: var(--gold-2);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 44px;
+      line-height: 1;
+      margin: 12px 0;
+    }
+    form { display: grid; gap: 14px; margin-top: 18px; }
+    label { color: var(--cream); display: grid; font-size: 14px; font-weight: 800; gap: 7px; }
+    input, select, textarea {
+      background: rgba(0,0,0,.34);
+      border: 1px solid rgba(216,181,106,.34);
+      border-radius: 6px;
+      color: var(--text);
+      font: inherit;
+      min-height: 48px;
+      padding: 12px 13px;
+      width: 100%;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    option { color: #111; }
+    .check {
+      align-items: start;
+      color: var(--muted);
+      display: grid;
+      font-size: 13px;
+      font-weight: 500;
+      gap: 10px;
+      grid-template-columns: 18px 1fr;
+    }
+    .check input { min-height: auto; margin-top: 3px; padding: 0; }
+    .note {
+      border-left: 3px solid var(--gold);
+      color: var(--muted);
+      margin-top: 18px;
+      padding-left: 14px;
+    }
+    footer { border-top: 1px solid var(--line); color: var(--muted); padding: 34px 0; }
+    @media (max-width: 820px) {
+      .grid, .two { grid-template-columns: 1fr; }
+      .actions, .nav-links { display: grid; width: 100%; }
+      nav { align-items: stretch; flex-direction: column; }
+      .button, .nav-links a { width: 100%; }
+      .hero-film { min-height: 280px; }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Personal Mind Movie",
+      "brand": { "@type": "Brand", "name": "Neville Goddard SOA" },
+      "description": "A private cinematic visualization and practice-mode experience built from a customer's Reality Profile.",
+      "offers": {
+        "@type": "Offer",
+        "price": "44",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/LimitedAvailability",
+        "url": "https://nevillegoddardsoa.com/mind-movies"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="/">Neville Goddard SOA</a>
+      <div class="nav-links">
+        <a href="/app">StateShift</a>
+        <a href="/library">Library</a>
+        <a href="/mind-movies">Mind Movies</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <p class="eyebrow">Personal Reality Rehearsal</p>
+        <h1>Your future should feel familiar.</h1>
+        <p class="lead">Turn the life you intend to live into a private cinematic visualization you can return to every day. Your scenes, visual tone, and music choices shape a film designed to make your chosen state easier to revisit.</p>
+        <div class="actions">
+          <a class="button primary" href="#intake">Create my reality</a>
+          <a class="button secondary" href="#method">See how it works</a>
+        </div>
+        <div class="hero-film" aria-label="Mind Movie visual preview">
+          <div class="film-copy">
+            <strong>Not a fantasy montage. A rehearsal of the state.</strong>
+            <span>Scenes are built around identity, environment, emotional familiarity, and ordinary moments that would naturally happen after fulfillment.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap grid">
+        <article class="card">
+          <p class="eyebrow">Reality Profile</p>
+          <h3>Your vision begins with what matters to you.</h3>
+          <p>Share the identity, moments, symbols, and atmosphere that make the fulfilled life feel personal rather than generic.</p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Practice Mode</p>
+          <h3>Watch without turning it into work.</h3>
+          <p>Each film includes a simple viewing rhythm: 7-day reset, 30-day reflection, and shorter anchor clips for repeat use.</p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Continuity</p>
+          <h3>Your next version evolves instead of restarting.</h3>
+          <p>If your life changes, your Mind Movie can preserve what still matters and update what has become true, irrelevant, or newly desired.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="wrap two">
+        <div>
+          <p class="eyebrow">The Method</p>
+          <h2>The Reality Rehearsal Method</h2>
+          <p class="lead">A structured process for making the fulfilled state vivid, emotionally natural, and easy to revisit.</p>
+          <p class="note">Neville's metaphysical teaching is presented as a spiritual and philosophical practice. We do not guarantee external outcomes or claim scientific proof of manifestation.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div><strong>Define the End</strong><br><span>Clarify what would make life feel fundamentally different.</span></div></div>
+          <div class="step"><div><strong>Build the Scene</strong><br><span>Turn abstract desires into lived moments, not random luxury objects.</span></div></div>
+          <div class="step"><div><strong>Feel the Familiarity</strong><br><span>Use pacing, music, and imagery to make the state feel natural.</span></div></div>
+          <div class="step"><div><strong>Repeat Without Strain</strong><br><span>Return to the film and anchor clip gently, especially before sleep.</span></div></div>
+          <div class="step"><div><strong>Live From the State</strong><br><span>Notice the choices and behaviors that become more available.</span></div></div>
+          <div class="step"><div><strong>Update the Vision</strong><br><span>Mark what is realized, evolved, in progress, or no longer desired.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Your Mind Movie</p>
+        <h2>A personal film you can practice with.</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Personal Mind Movie</h3>
+            <p class="price">$44</p>
+            <p>A private, made-for-you visualization built around an ordinary scene that implies your desired life is already familiar.</p>
+          </article>
+          <article class="card">
+            <h3>Included</h3>
+            <ul>
+              <li>3-5 minute personal film</li>
+              <li>60-second condensed version</li>
+              <li>15-second anchor clip</li>
+              <li>one revision</li>
+              <li>7-day and 30-day reflection prompts</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Privacy First</h3>
+            <p>Your private answers are not used publicly. You can request deletion, export, or a profile reset. Public stories require separate permission.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="intake">
+      <div class="wrap two">
+        <div>
+          <p class="eyebrow">Create My Reality</p>
+          <h2>Start with the life, not the objects.</h2>
+          <p class="lead">Tell us what fulfillment would look and feel like in your actual life. Specific, ordinary details help your film feel personal and believable.</p>
+          <p class="note">After you submit, we will review your vision and email the next steps, price confirmation, and delivery timing before you pay. Submitting this form does not charge you.</p>
+        </div>
+        <div class="form-card">
+          <form method='POST' name='mind-movie-intake'>
+            <input type="hidden" name="form-name" value="mind-movie-intake">
+            <label style="display:none">Do not fill this out
+              <input name="bot-field" tabindex="-1" autocomplete="off">
+            </label>
+            <label>Email
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>What would make your life feel fundamentally different?
+              <textarea name="desired_identity" required></textarea>
+            </label>
+            <label>Primary focus
+              <select name="primary_focus" required>
+                <option value="">Choose one</option>
+                <option>Money / business / career</option>
+                <option>Love / relationship / family</option>
+                <option>Health / confidence</option>
+                <option>Travel / freedom</option>
+                <option>Purpose / creative work</option>
+              </select>
+            </label>
+            <label>Describe one ordinary moment that would happen after it is already true.
+              <textarea name="after_it_is_true_scene" required></textarea>
+            </label>
+            <label>Visual tone
+              <select name="visual_tone">
+                <option>Cinematic realistic</option>
+                <option>Dreamlike but grounded</option>
+                <option>Quiet and minimal</option>
+                <option>Luxury but not flashy</option>
+              </select>
+            </label>
+            <label>Music tone
+              <select name="music_tone">
+                <option>Cinematic warm</option>
+                <option>Ambient sleep</option>
+                <option>Piano and strings</option>
+                <option>Soft R&B</option>
+                <option>No music</option>
+              </select>
+            </label>
+            <label>What should never appear in your film?
+              <textarea name="avoid"></textarea>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="consent_profile" value="yes" required>
+              <span>Use these private answers to review and, if I purchase, create my Mind Movie. Do not use them publicly without separate permission.</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="consent_no_guarantee" value="yes" required>
+              <span>I understand this is a visualization and practice product, not a guarantee of money, relationship, health, or external outcomes.</span>
+            </label>
+            <button class="button primary" type="submit">Send my vision for review</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Neville Goddard SOA. Private practice tools, applied imagination products, and personal visualization experiences.</div>
+  </footer>
+</body>
+</html>

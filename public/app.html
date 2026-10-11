@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StateShift | Neville Goddard SOA</title>
+  <meta name="description" content="A simple Neville Goddard-inspired SATS practice app for building one scene, entering one state, and tracking the nightly routine.">
+  <meta name="theme-color" content="#050505">
+  <link rel="canonical" href="https://nevillegoddardsoa.com/app">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/assets/stateshift-icon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050505;
+      --panel: #10100f;
+      --panel-2: #171513;
+      --cream: #f5efe2;
+      --text: #fff9ee;
+      --muted: #cfc5b4;
+      --soft: rgba(245,239,226,.72);
+      --line: rgba(245,239,226,.16);
+      --line-strong: rgba(216,181,106,.38);
+      --gold: #d8b56a;
+      --gold-2: #f0d28a;
+      --oxblood: #7e1f24;
+      --steel: #8aa0b8;
+      --success: #c8e6c9;
+      --danger: #f3b6b6;
+      --ink: #0b0b0a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(216,181,106,.12), transparent 28rem),
+        linear-gradient(90deg, rgba(216,181,106,.035) 1px, transparent 1px),
+        linear-gradient(180deg, #11100d 0%, #050505 38rem, #030303 100%);
+      background-size: auto, 96px 96px, auto;
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    .wrap { width: min(1180px, calc(100% - 34px)); margin: 0 auto; }
+    header {
+      background: rgba(5,5,5,.84);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    nav { align-items: center; display: flex; gap: 16px; justify-content: space-between; padding: 18px 0; }
+    .brand {
+      color: var(--gold-2);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 3vw, 31px);
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-decoration: none;
+    }
+    .nav-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+    .button {
+      align-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      font-weight: 800;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 16px;
+      text-decoration: none;
+      transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+    }
+    .button:hover { transform: translateY(-1px); }
+    .primary { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+    .primary:hover { background: var(--gold-2); border-color: var(--gold-2); }
+    .secondary { background: rgba(245,239,226,.045); color: var(--cream); }
+    .secondary:hover { background: rgba(245,239,226,.095); }
+    .ghost { background: transparent; color: var(--cream); }
+    .hero { padding: clamp(46px, 8vw, 92px) 0 34px; }
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .18em;
+      margin: 0 0 16px;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      color: var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1;
+      margin: 0;
+    }
+    h1 { font-size: clamp(44px, 8vw, 96px); max-width: 980px; }
+    h2 { font-size: clamp(30px, 4.5vw, 52px); margin-bottom: 16px; }
+    h3 { font-size: 25px; margin-bottom: 8px; }
+    .lead {
+      color: var(--soft);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.6;
+      margin: 24px 0 0;
+      max-width: 760px;
+    }
+    .hero-grid {
+      align-items: stretch;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+      margin-top: 34px;
+    }
+    .section { padding: clamp(42px, 7vw, 78px) 0; border-top: 1px solid var(--line); }
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .two { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .card, .panel {
+      background: linear-gradient(180deg, rgba(245,239,226,.075), rgba(245,239,226,.028));
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow: 0 28px 90px rgba(0,0,0,.3);
+      padding: 22px;
+    }
+    .panel {
+      background:
+        linear-gradient(135deg, rgba(216,181,106,.16), rgba(126,31,36,.08) 44%, rgba(245,239,226,.05)),
+        #080807;
+      border-color: var(--line-strong);
+    }
+    .tag {
+      color: var(--gold);
+      display: block;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .16em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .small, .card p, li { color: var(--muted); }
+    .small { font-size: 14px; }
+    .stack { display: grid; gap: 14px; }
+    label { color: var(--cream); display: grid; font-size: 14px; font-weight: 750; gap: 7px; }
+    input, select, textarea {
+      background: rgba(0,0,0,.34);
+      border: 1px solid rgba(216,181,106,.3);
+      border-radius: 6px;
+      color: var(--text);
+      min-height: 50px;
+      padding: 12px 14px;
+      width: 100%;
+    }
+    textarea { min-height: 132px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(216,181,106,.14);
+      outline: none;
+    }
+    option { color: #111; }
+    .segmented { display: grid; gap: 8px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .segmented button {
+      background: rgba(245,239,226,.045);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--cream);
+      cursor: pointer;
+      min-height: 46px;
+      padding: 8px 10px;
+    }
+    .segmented button[aria-pressed="true"] {
+      background: rgba(216,181,106,.18);
+      border-color: var(--gold);
+      color: var(--gold-2);
+    }
+    .timer {
+      align-items: center;
+      aspect-ratio: 1;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      display: grid;
+      margin: 0 auto 16px;
+      max-width: 320px;
+      place-items: center;
+      width: 100%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(216,181,106,.16), transparent 58%),
+        rgba(0,0,0,.22);
+    }
+    .time { color: var(--gold-2); font-family: Georgia, "Times New Roman", serif; font-size: clamp(54px, 9vw, 84px); line-height: .9; }
+    .timer-caption { color: var(--muted); font-size: 13px; margin-top: 5px; text-align: center; }
+    .state-row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+    .meter {
+      accent-color: var(--gold);
+      min-height: auto;
+      padding: 0;
+    }
+    .status {
+      color: var(--success);
+      min-height: 24px;
+    }
+    .danger { color: var(--danger); }
+    .history { display: grid; gap: 10px; }
+    .history-item {
+      background: rgba(245,239,226,.045);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 12px;
+    }
+    .install-banner {
+      align-items: center;
+      background: rgba(126,31,36,.16);
+      border: 1px solid rgba(216,181,106,.32);
+      border-radius: 6px;
+      display: none;
+      gap: 14px;
+      justify-content: space-between;
+      margin-top: 18px;
+      padding: 14px;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 32px 0;
+    }
+    .hidden { display: none !important; }
+    @media (max-width: 920px) {
+      .hero-grid, .grid, .two { grid-template-columns: 1fr; }
+      .segmented { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      nav { align-items: flex-start; flex-direction: column; }
+      .nav-actions, .button { width: 100%; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 30px, 1180px); }
+      .hero { padding-top: 38px; }
+      h1 { font-size: 42px; }
+      .card, .panel { padding: 18px; }
+      .state-row { grid-template-columns: 1fr; }
+      .segmented { grid-template-columns: 1fr; }
+      .time { font-size: 58px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="/">StateShift by Neville Goddard SOA</a>
+      <div class="nav-actions">
+        <a class="button ghost" href="/">Home</a>
+        <a class="button secondary" href="/affirmations-did-not-fail">SATS Protocol</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="eyebrow">Nightly SATS practice app</p>
+      <h1>Build one scene. Enter one state. Track the shift.</h1>
+      <p class="lead">StateShift is a simple Neville-inspired practice app for people who do not need more vague affirmation content. Use it before sleep, record the state change, and keep the routine clean.</p>
+      <div class="card" style="margin-top:24px">
+        <span class="tag">How it works</span>
+        <p class="small">Pick a focus, describe one short scene that would happen after your desire is fulfilled, and set the timer. When the session ends, record how settled and convinced you feel. Your scene and practice history stay on this device unless you choose to clear them.</p>
+      </div>
+      <div class="install-banner" id="installBanner">
+        <span>Install StateShift on this device for a faster nightly routine.</span>
+        <button class="button primary" type="button" id="installButton">Install</button>
+      </div>
+
+      <div class="hero-grid">
+        <section class="panel stack" aria-labelledby="practice-title">
+          <span class="tag">Tonight's practice</span>
+          <h2 id="practice-title">Choose the state.</h2>
+          <label>
+            Practice focus
+            <select id="focus">
+              <option value="wealth">Financial wealth</option>
+              <option value="sp">Relationship / specific person</option>
+              <option value="health">Perfect health and body confidence</option>
+              <option value="selfConcept">Self-concept</option>
+              <option value="peace">Calm certainty</option>
+            </select>
+          </label>
+          <label>
+            Imaginal scene
+            <textarea id="scene" placeholder="Example: I am calmly reviewing a message, payment, or moment that confirms the state I have chosen."></textarea>
+          </label>
+          <label>
+            State phrase
+            <input id="statePhrase" placeholder="Example: It is already done. I am the person who has it.">
+          </label>
+          <div class="actions">
+            <button class="button primary" type="button" id="savePractice">Save tonight's scene</button>
+            <button class="button secondary" type="button" id="loadPrompt">Use a guided prompt</button>
+          </div>
+          <p class="status" id="saveStatus" role="status"></p>
+        </section>
+
+        <section class="card stack" aria-labelledby="timer-title">
+          <span class="tag">Timer</span>
+          <h2 id="timer-title">SATS session</h2>
+          <div class="timer" aria-live="polite">
+            <div>
+              <div class="time" id="timeDisplay">05:00</div>
+              <div class="timer-caption" id="timerCaption">Settle the body. Keep the scene simple.</div>
+            </div>
+          </div>
+          <div class="segmented" aria-label="Timer length">
+            <button type="button" data-minutes="3">3 min</button>
+            <button type="button" data-minutes="5" aria-pressed="true">5 min</button>
+            <button type="button" data-minutes="10">10 min</button>
+            <button type="button" data-minutes="20">20 min</button>
+          </div>
+          <div class="actions">
+            <button class="button primary" type="button" id="startTimer">Start</button>
+            <button class="button secondary" type="button" id="pauseTimer">Pause</button>
+            <button class="button secondary" type="button" id="resetTimer">Reset</button>
+          </div>
+          <audio id="ambientLoop" preload="none" loop src="/media/neville-sats-reset.mp4"></audio>
+          <p class="small">Audio is optional. Use low volume. The app does not guarantee personal, relationship, health, or financial outcomes.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap two">
+        <section class="card stack" aria-labelledby="checkin-title">
+          <span class="tag">State check-in</span>
+          <h2 id="checkin-title">Measure the shift.</h2>
+          <div class="state-row">
+            <label>
+              Before practice
+              <input class="meter" id="before" type="range" min="1" max="10" value="4">
+              <span class="small" id="beforeLabel">4 / 10</span>
+            </label>
+            <label>
+              After practice
+              <input class="meter" id="after" type="range" min="1" max="10" value="7">
+              <span class="small" id="afterLabel">7 / 10</span>
+            </label>
+          </div>
+          <label>
+            One sentence from the desired state
+            <input id="reflection" placeholder="I am moving as the person who already has this.">
+          </label>
+          <button class="button primary" type="button" id="completeSession">Complete session</button>
+          <p class="status" id="completeStatus" role="status"></p>
+        </section>
+
+        <section class="card stack" aria-labelledby="streak-title">
+          <span class="tag">Proof of practice</span>
+          <h2 id="streak-title"><span id="streakCount">0</span>-day streak</h2>
+          <p class="small">This app helps you return to the practice consistently. It does not promise a particular external outcome.</p>
+          <div class="history" id="history"></div>
+          <div class="actions">
+            <a class="button primary" href="/affirmations-did-not-fail">Get the $27 SATS Protocol</a>
+            <button class="button secondary" type="button" id="clearLocal">Clear local data</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap two">
+        <section class="panel stack" aria-labelledby="guide-title">
+          <span class="tag">Free guide</span>
+          <h2 id="guide-title">Send yourself the guide that fits tonight.</h2>
+          <p class="small">Choose the guide that fits tonight and receive it by email. If delivery is delayed, a backup download appears on screen.</p>
+          <form class='stack' id='guideForm' method='POST' name='stateshift-guide-lead'>
+            <input type="hidden" name="form-name" value="stateshift-guide-lead">
+            <p hidden><label>Do not fill this out: <input name="bot-field"></label></p>
+            <label>Name <input name="name" autocomplete="name" required></label>
+            <label>Email <input name="email" type="email" autocomplete="email" required></label>
+            <label>
+              Guide
+              <select name="guide">
+                <option value="money">Money SATS reset</option>
+                <option value="relationships">Relationships / specific person SATS reset</option>
+                <option value="health">Health and perfect body SATS reset</option>
+                <option value="selfConcept">Self-concept SATS reset</option>
+              </select>
+            </label>
+            <label>
+              <span class="small">Consent</span>
+              <select name="consent" required>
+                <option value="">Choose one</option>
+                <option value="yes">Email me the guide and Neville SOA practice resources.</option>
+              </select>
+            </label>
+            <button class="button primary" type="submit">Send my guide</button>
+          </form>
+          <p class="status" id="guideStatus" role="status"></p>
+          <div id="guideDownloads" class="stack hidden"></div>
+        </section>
+
+        <section class="card stack" aria-labelledby="use-title">
+          <span class="tag">How to use it</span>
+          <h2 id="use-title">Keep the practice narrow.</h2>
+          <ul>
+            <li>Use one scene per night.</li>
+            <li>Keep the phrase short enough to remember while sleepy.</li>
+            <li>Measure calmness and conviction before and after.</li>
+            <li>Use the free guide when you want the routine in writing.</li>
+          </ul>
+          <p class="small">Educational and spiritual self-practice only. Not medical, legal, psychological, relationship, investment, or financial advice.</p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Neville Goddard SOA. StateShift stores practice data locally in this browser unless you submit the free guide form.</p>
+    </div>
+</footer>
+
+  <script>
+    const state = {
+      minutes: 5,
+      remaining: 300,
+      timer: null,
+      installPrompt: null
+    };
+
+    const prompts = {
+      wealth: {
+        scene: "I am reviewing a normal moment that proves money is handled, stable, and available. My body is calm because this is now ordinary.",
+        phrase: "I am the person who receives, keeps, and directs wealth calmly."
+      },
+      sp: {
+        scene: "I am experiencing a loving, secure moment where I feel chosen, respected, and at ease without chasing or forcing.",
+        phrase: "I am chosen, secure, and loved from a stable self-concept."
+      },
+      health: {
+        scene: "I am moving through the day with ease, confidence, and appreciation for my body while choosing supportive actions.",
+        phrase: "I return to calm, care, and confidence in my body."
+      },
+      selfConcept: {
+        scene: "I am responding to life from quiet authority. I no longer rehearse rejection, lack, or urgency.",
+        phrase: "I am the version of myself who is selected, trusted, and steady."
+      },
+      peace: {
+        scene: "I am closing the day with relief because the state has been chosen and nothing needs to be forced tonight.",
+        phrase: "I rest in the fulfilled state now."
+      }
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    function formatTime(seconds) {
+      const m = String(Math.floor(seconds / 60)).padStart(2, "0");
+      const s = String(seconds % 60).padStart(2, "0");
+      return `${m}:${s}`;
+    }
+
+    function updateTimerDisplay() {
+      $("timeDisplay").textContent = formatTime(state.remaining);
+    }
+
+    function setMinutes(minutes) {
+      state.minutes = minutes;
+      state.remaining = minutes * 60;
+      updateTimerDisplay();
+      document.querySelectorAll("[data-minutes]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(Number(button.dataset.minutes) === minutes));
+      });
+    }
+
+    function loadSavedPractice() {
+      const saved = JSON.parse(localStorage.getItem("stateshift.practice") || "{}");
+      if (saved.focus) $("focus").value = saved.focus;
+      if (saved.scene) $("scene").value = saved.scene;
+      if (saved.statePhrase) $("statePhrase").value = saved.statePhrase;
+    }
+
+    function savePractice() {
+      const payload = {
+        focus: $("focus").value,
+        scene: $("scene").value.trim(),
+        statePhrase: $("statePhrase").value.trim(),
+        savedAt: new Date().toISOString()
+      };
+      localStorage.setItem("stateshift.practice", JSON.stringify(payload));
+      $("saveStatus").textContent = "Saved. Use this scene tonight, then complete the session.";
+    }
+
+    function usePrompt() {
+      const prompt = prompts[$("focus").value] || prompts.wealth;
+      $("scene").value = prompt.scene;
+      $("statePhrase").value = prompt.phrase;
+      savePractice();
+    }
+
+    function startTimer() {
+      if (state.timer) return;
+      $("timerCaption").textContent = "Stay with the felt reality of the scene.";
+      const audio = $("ambientLoop");
+      audio.volume = 0.18;
+      audio.play().catch(() => {});
+      state.timer = window.setInterval(() => {
+        state.remaining -= 1;
+        updateTimerDisplay();
+        if (state.remaining <= 0) {
+          pauseTimer();
+          $("timerCaption").textContent = "Session complete. Record the after-state.";
+          state.remaining = 0;
+          updateTimerDisplay();
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      window.clearInterval(state.timer);
+      state.timer = null;
+      $("ambientLoop").pause();
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      state.remaining = state.minutes * 60;
+      $("timerCaption").textContent = "Settle the body. Keep the scene simple.";
+      updateTimerDisplay();
+    }
+
+    function updateMeters() {
+      $("beforeLabel").textContent = `${$("before").value} / 10`;
+      $("afterLabel").textContent = `${$("after").value} / 10`;
+    }
+
+    function getHistory() {
+      return JSON.parse(localStorage.getItem("stateshift.history") || "[]");
+    }
+
+    function setHistory(items) {
+      localStorage.setItem("stateshift.history", JSON.stringify(items.slice(0, 21)));
+      renderHistory();
+    }
+
+    function calculateStreak(items) {
+      const days = [...new Set(items.map((item) => item.date))].sort().reverse();
+      if (!days.length) return 0;
+      let streak = 0;
+      const cursor = new Date();
+      for (const day of days) {
+        const expected = cursor.toISOString().slice(0, 10);
+        if (day !== expected) break;
+        streak += 1;
+        cursor.setDate(cursor.getDate() - 1);
+      }
+      return streak;
+    }
+
+    function completeSession() {
+      const practice = JSON.parse(localStorage.getItem("stateshift.practice") || "{}");
+      const today = new Date().toISOString().slice(0, 10);
+      const item = {
+        date: today,
+        focus: $("focus").value,
+        before: Number($("before").value),
+        after: Number($("after").value),
+        reflection: $("reflection").value.trim(),
+        scene: practice.scene || $("scene").value.trim(),
+        completedAt: new Date().toISOString()
+      };
+      const history = getHistory().filter((entry) => entry.date !== today);
+      setHistory([item, ...history]);
+      $("completeStatus").textContent = "Session recorded locally. Keep tomorrow's practice simple.";
+    }
+
+    function renderHistory() {
+      const history = getHistory();
+      $("streakCount").textContent = calculateStreak(history);
+      const container = $("history");
+      container.innerHTML = "";
+      if (!history.length) {
+        const empty = document.createElement("p");
+        empty.className = "small";
+        empty.textContent = "No completed sessions yet.";
+        container.appendChild(empty);
+        return;
+      }
+      history.slice(0, 5).forEach((item) => {
+        const div = document.createElement("div");
+        div.className = "history-item";
+        div.textContent = `${item.date}: ${item.focus} shifted from ${item.before}/10 to ${item.after}/10. ${item.reflection || ""}`;
+        container.appendChild(div);
+      });
+    }
+
+    let guideSubmitInFlight = false;
+
+    async function submitGuide(event) {
+      event.preventDefault();
+      if (guideSubmitInFlight) return;
+      guideSubmitInFlight = true;
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+      const status = $("guideStatus");
+      const downloads = $("guideDownloads");
+      const submitButton = form.querySelector("button[type='submit'], input[type='submit']");
+      if (submitButton) submitButton.disabled = true;
+      status.textContent = "Sending guide...";
+      downloads.classList.add("hidden");
+      downloads.innerHTML = "";
+
+      try {
+        const response = await fetch("/api/free-sats-guide", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.get("name"),
+            email: formData.get("email"),
+            guide: formData.get("guide"),
+            consent: formData.get("consent") === "yes",
+            source: "stateshift-app"
+          })
+        });
+        const data = await response.json();
+        if (!response.ok || !data.ok) throw new Error(data.error || "Guide delivery failed.");
+        status.textContent = "Guide sent. Backup download is below.";
+        const link = document.createElement("a");
+        link.className = "button secondary";
+        link.href = data.downloadUrl || `/api/free-sats-guide?guide=${encodeURIComponent(formData.get("guide"))}`;
+        link.textContent = "Open backup download";
+        downloads.appendChild(link);
+        downloads.classList.remove("hidden");
+      } catch (error) {
+        const encodedGuide = encodeURIComponent(formData.get("guide"));
+        status.innerHTML = '<span class="danger">Email delivery could not be confirmed. Use the backup download.</span>';
+        const link = document.createElement("a");
+        link.className = "button secondary";
+        link.href = `/api/free-sats-guide?guide=${encodedGuide}`;
+        link.textContent = "Open backup download";
+        downloads.appendChild(link);
+        downloads.classList.remove("hidden");
+      } finally {
+        guideSubmitInFlight = false;
+        if (submitButton) submitButton.disabled = false;
+      }
+    }
+
+    function clearLocalData() {
+      localStorage.removeItem("stateshift.practice");
+      localStorage.removeItem("stateshift.history");
+      $("scene").value = "";
+      $("statePhrase").value = "";
+      $("reflection").value = "";
+      $("completeStatus").textContent = "Local practice data cleared.";
+      renderHistory();
+    }
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      state.installPrompt = event;
+      $("installBanner").style.display = "flex";
+    });
+
+    $("installButton").addEventListener("click", async () => {
+      if (!state.installPrompt) return;
+      state.installPrompt.prompt();
+      await state.installPrompt.userChoice;
+      state.installPrompt = null;
+      $("installBanner").style.display = "none";
+    });
+
+    document.querySelectorAll("[data-minutes]").forEach((button) => {
+      button.addEventListener("click", () => setMinutes(Number(button.dataset.minutes)));
+    });
+    $("savePractice").addEventListener("click", savePractice);
+    $("loadPrompt").addEventListener("click", usePrompt);
+    $("startTimer").addEventListener("click", startTimer);
+    $("pauseTimer").addEventListener("click", pauseTimer);
+    $("resetTimer").addEventListener("click", resetTimer);
+    $("completeSession").addEventListener("click", completeSession);
+    $("clearLocal").addEventListener("click", clearLocalData);
+    $("guideForm").addEventListener("submit", submitGuide);
+    ["before", "after"].forEach((id) => $(id).addEventListener("input", updateMeters));
+    $("focus").addEventListener("change", () => {
+      $("saveStatus").textContent = "";
+    });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js").catch(() => {});
+      });
+    }
+
+    setMinutes(5);
+    updateMeters();
+    loadSavedPractice();
+    renderHistory();
+  </script>
+</body>
+</html>

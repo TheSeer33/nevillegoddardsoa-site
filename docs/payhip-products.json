@@ -1,0 +1,41 @@
+[
+  {
+    "id": "sats-protocol",
+    "name": "The SATS Protocol",
+    "price": 27,
+    "pages": 14,
+    "url": "https://payhip.com/b/KugVT",
+    "desc": "Learn Neville Goddard\u2019s State Akin to Sleep with seven lessons, imaginal scene exercises, worked examples, and a seven-night practice review.",
+    "points": [
+      "Design a short first-person scene",
+      "Practice repetition without forcing emotion",
+      "Use revision and review your nightly practice"
+    ]
+  },
+  {
+    "id": "workbook",
+    "name": "30-Day Assumption Workbook",
+    "price": 37,
+    "pages": 34,
+    "url": "https://payhip.com/b/k9MyO",
+    "desc": "Thirty distinct daily exercises for assumptions, inner conversations, revision, and deliberate everyday decisions.",
+    "points": [
+      "Follow one focused exercise each day",
+      "Apply the instruction and record your reflections",
+      "Build a repeatable thirty-day practice"
+    ]
+  },
+  {
+    "id": "money-self-concept",
+    "name": "Money & Self-Concept Guide",
+    "price": 37,
+    "pages": 14,
+    "url": "https://payhip.com/b/VKSnm",
+    "desc": "Explore financial identity through Neville-inspired inner practice, clear decisions, and honest accounting. Educational reflection, not financial advice.",
+    "points": [
+      "Separate verified facts from money stories",
+      "Work through receiving, boundaries, and triggers",
+      "Connect your inner practice with a weekly review"
+    ]
+  }
+]

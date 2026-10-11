@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">StateShift</title>
+  <desc id="desc">Gold monogram mark for the StateShift SATS practice app.</desc>
+  <rect width="512" height="512" rx="96" fill="#050505"/>
+  <rect x="34" y="34" width="444" height="444" rx="72" fill="none" stroke="#d8b56a" stroke-width="18"/>
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#f0d28a" stroke-width="12" opacity=".72"/>
+  <path d="M162 292c30 48 87 70 139 49 47-19 75-67 68-116-4-28-18-55-39-74" fill="none" stroke="#d8b56a" stroke-width="24" stroke-linecap="round"/>
+  <path d="M350 145v88h-88" fill="none" stroke="#d8b56a" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M350 220c-30-48-87-70-139-49-47 19-75 67-68 116 4 28 18 55 39 74" fill="none" stroke="#f0d28a" stroke-width="24" stroke-linecap="round"/>
+  <path d="M162 367v-88h88" fill="none" stroke="#f0d28a" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="256" y="280" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="72" font-weight="700" fill="#f5efe2">S</text>
+</svg>
